@@ -1,62 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Be My Valentine 💘</title>
-<style>
-  body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #1a1a1a, #3b0a2a);
-    overflow: hidden;
-    color: #fff;
-    margin: 0;
-  }
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💘</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1a1a1a, #3b0a2a);
+      overflow: hidden;
+      color: #fff;
+    }
 
-  .box {
-    text-align: center;
-  }
+    .box {
+      text-align: center;
+    }
 
-  h1 {
-    margin-bottom: 30px;
-  }
+    h1 {
+      margin-bottom: 30px;
+    }
 
-  button {
-    padding: 12px 25px;
-    font-size: 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin: 10px;
-    transition: transform 0.2s;
-  }
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 10px;
+    }
 
-  button:hover {
-    transform: scale(1.1);
-  }
+    #yes {
+      background-color: #e11d48;
+      color: white;
+    }
 
-  #yes {
-    background-color: #e11d48;
-    color: white;
-  }
-
-  #no {
-    background-color: #444;
-    color: white;
-  }
-</style>
+    #no {
+      position: absolute;
+      background-color: #444;
+      color: white;
+    }
+  </style>
 </head>
 <body>
+
   <div class="box">
     <h1>Will you be my Valentine? 💖</h1>
     <button id="yes">Yes</button>
     <button id="no">No</button>
   </div>
 
+  <!-- R&B Style Music -->
+  <audio id="bgMusic">
+    <source src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_3b10c1bb3b.mp3" type="audio/mpeg">
+  </audio>
+
   <script>
-    // When "Yes" is tapped
-    document.getElementById('yes').addEventListener('click', function() {
-      alert('Yay! ❤️
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const music = document.getElementById("bgMusic");
+
+    // "No" button runs away
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 60);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    // Play music and show message on "Yes" click
+    yesBtn.addEventListener("click", () => {
+      music.volume = 0.6;
+      music.play();
+      alert("You just made my day 💘😌");
+    });
+  </script>
+
+</body>
+</html>
